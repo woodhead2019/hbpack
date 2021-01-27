@@ -1,0 +1,44 @@
+
+cd \github\hmg
+git fetch
+
+cd \github\oohg
+git fetch
+
+cd \github\oohg_distros
+git fetch
+
+cd \github\oohg_doc
+git fetch
+
+cd \github\oohg_fmt
+git fetch
+
+cd \github\oohg_ide
+git fetch
+
+cd \github\oohg_samples
+git fetch
+
+rem sourceforge need to be on branch
+
+cd \github\hwgui
+git branch sourceforge
+git checkout sourceforge
+git svn init https://svn.code.sf.net/p/hwgui/code/trunk
+git svn fetch
+git checkout main
+
+cd \github\xharbour
+git branch sourceforge
+git checkout sourceforge
+git svn init https://svn.code.sf.net/p/xharbour/code/trunk
+git svn fetch
+git checkout main
+
+cd \github\harbour_34
+git fetch
+
+cd \github\harbour_32
+git fetch
+

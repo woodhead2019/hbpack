@@ -1,0 +1,57 @@
+name: bcc_0582
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+
+  Build:
+    runs-on: windows-latest
+    steps:
+
+    - name: Load mingw
+      uses: JoseQuintas/action-download-artifact@v2
+      with:
+         workflow: bcc_0582.yml
+         workflow_conclusion: success
+         name: bcc_0582
+         path: c:\temp
+         repo: JoseQuintas/hbpack
+
+    - name: Load mingw
+      uses: JoseQuintas/action-download-artifact@v2
+      with:
+         workflow: bcc_0582.yml
+         workflow_conclusion: success
+         name: hb32_bcc
+         path: c:\temp
+         repo: JoseQuintas/hbpack
+
+    - name: Load mingw
+      uses: JoseQuintas/action-download-artifact@v2
+      with:
+         workflow: bcc_0582.yml
+         workflow_conclusion: success
+         name: xhb_bcc
+         path: c:\temp
+         repo: JoseQuintas/hbpack
+
+    - name: Save
+      uses: actions/upload-artifact@v2
+      with:
+         name: bcc_0582
+         path: c:\temp\bcc_0582.7z
+
+    - name: Save
+      uses: actions/upload-artifact@v2
+      with:
+         name: hb32_bcc
+         path: c:\temp\hb32_bcc.7z
+
+    - name: Save
+      uses: actions/upload-artifact@v2
+      with:
+         name: xhb_bcc
+         path: c:\temp\xhb_bcc.7z
+

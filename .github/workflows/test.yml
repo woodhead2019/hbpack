@@ -1,0 +1,32 @@
+# General tests
+#
+
+name: test
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Test'
+        default: 'test'
+        required: true
+
+jobs:
+
+  Build:
+
+    runs-on: windows-latest ### windows-2019 ubuntu-18.04 macos-11.0
+
+    steps:
+
+    - name: Test Powershell
+      env:
+         Actor: ${{ github.actor }}
+         RepoName: ${{ github.event.repository.name }}
+         RepoActor: ${{ github.event.repository.actor }}
+      shell: pwsh
+      run: |
+         c:
+         echo $env:Actor
+         echo $env:RepoName
+         echo $env:RepoActor

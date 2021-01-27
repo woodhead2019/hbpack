@@ -1,0 +1,30 @@
+#
+# use:    JoseQuintas/hbpack/mingw_1002
+# create: JoseQuintas/hbpack/mingw_1002
+#
+
+name: mingw 10.2
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+
+  Build:
+    runs-on: windows-latest
+    steps:
+    - name: Load mingw
+      uses: JoseQuintas/action-download-artifact@v2
+      with:
+         workflow: mingw_1002.yml
+         workflow_conclusion: success
+         name: mingw_1002
+         path: c:\temp
+         repo: JoseQuintas/hbpack
+
+    - name: Save
+      uses: actions/upload-artifact@v2
+      with:
+         name: mingw_1002
+         path: c:\temp\mingw_1002.7z

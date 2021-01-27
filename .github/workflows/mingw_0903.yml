@@ -1,0 +1,49 @@
+#
+# use:    JoseQuintas/hbpack/mingw_0903
+# create: JoseQuintas/hbpack/mingw_0903
+#
+# to use on JoseQuintas/hmg
+#
+
+name: mingw 9.3
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+
+jobs:
+
+  Build:
+    runs-on: windows-latest
+    steps:
+
+    - name: Load mingw
+      uses: JoseQuintas/action-download-artifact@v2
+      with:
+         workflow: mingw_0903.yml
+         workflow_conclusion: success
+         name: mingw_0903
+         path: c:\temp
+         repo: JoseQuintas/hbpack
+
+    - name: Load harbour
+      uses: JoseQuintas/action-download-artifact@v2
+      with:
+         workflow: mingw_0903.yml
+         workflow_conclusion: success
+         name: hb32_0903
+         path: c:\temp
+         repo: JoseQuintas/hbpack
+
+    - name: Save
+      uses: actions/upload-artifact@v2
+      with:
+         name: mingw_0903
+         path: c:\temp\mingw_0903.7z
+
+    - name: Save
+      uses: actions/upload-artifact@v2
+      with:
+         name: hb32_0903
+         path: c:\temp\hb32_0903.7z
