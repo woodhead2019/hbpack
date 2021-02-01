@@ -1,18 +1,13 @@
-#
-# use:    JoseQuintas/hbpack/mingw_0703
-# create: JoseQuintas/hbpack/mingw_0703
-#
-
-name: mingw 7.3
+name: xharbour
 
 on:
   schedule:
-    - cron: '0 0 2/1 * *'
+    - cron: '0 0 * * *'
   workflow_dispatch:
     inputs:
       name:
-        description: 'mingw 7.3'
-        default: 'mingw_0703'
+        description: 'xharbour'
+        default: 'xharbour'
         required: true
 
 jobs:
@@ -20,17 +15,18 @@ jobs:
   Build:
     runs-on: windows-latest
     steps:
-    - name: Load mingw
+
+    - name: Load
       uses: JoseQuintas/action-download-artifact@v2
       with:
-         workflow: mingw_0703.yml
+         workflow: xharbour.yml
          workflow_conclusion: success
-         name: mingw_0703
+         name: xharbour
          path: c:\temp
          repo: JoseQuintas/hbpack
 
     - name: Save
       uses: actions/upload-artifact@v2
       with:
-         name: mingw_0703
-         path: c:\temp\mingw_0703.7z
+         name: xharbour
+         path: c:\temp\xharbour.7z

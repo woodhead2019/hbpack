@@ -1,68 +1,39 @@
+@echo off
 
-cd \github
-git clone https://github.com/JoseQuintas/harbour_32 harbour_32
-cd \github\harbour_32
-git pull https://github.com/harbour/core
-git push
+:Main
 
-cd \github
-git clone https://github.com/JoseQuintas/harbour_34 harbour_34
-cd \github\harbour_34
-git pull https://github.com/vszakats/hb
-git push
+   call :update harbour_32    harbour_32     https://github.com/harbour/core
+   call :update harbour_34    harbour_34     https://github.com/vszakats/hb
+   call :update hbdeleted     hbdeleted
+   call :update hmg           hmg
+   call :update hmge          hmge
+   call :update oohg_core     oohg           https://github.com/oohg/core
+   call :update oohg_distros  oohg_distros   https://github.com/oohg/distros
+   call :update oohg_doc      oohg_doc       https://github.com/oohg/doc
+   call :update oohg_fmt      oohg_fmt       https://github.com/oohg/fmt
+   call :update oohg_ide      oohg_ide       https://github.com/oohg/ide
+   call :update oohg_samples  oohg_samples   https://github.com/oohg/samples
+   call :update hwgui         hwgui
+   call :update hbsefazclass  hbsefazclass
 
-cd \github
-git clone https://github.com/JoseQuintas/hbdeleted hbdeleted
-cd \github\hbdeleted
-git push
+:hwgui_sourceforge
 
-cd \github
-git clone https://github.com/JoseQuintas/hmg hmg
-rem cd \github\hmg
-rem git pull https://github.com/HMG-Official/HMG
-git push
+   echo create/Update hwgui from sourceforge
+   cd \github\hwgui
+   git svn init https://svn.code.sf.net/p/hwgui/code/trunk/hwgui
+   git svn fetch
+   git push
 
-cd \github
-git clone https://github.com/JoseQuintas/oohg_core oohg
-cd \github\oohg
-git pull https://github.com/oohg/core
-git push
+   goto :exit
 
-cd \github
-git clone https://github.com/JoseQuintas/oohg_distros oohg_distros
-cd \github\oohg_distros
-git pull https://github.com/oohg/distros
-git push
+:update
 
-cd \github
-git clone https://github.com/JoseQuintas/oohg_doc oohg_doc
-cd \github\oohg_doc
-git pull https://github.com/oohg/doc
-git push
+   echo create %2
+   git clone https://github.com/JoseQuintas/%1 \github\%2 --depth 100
+   echo updating %2 from %3
+   cd \github\%2
+   if not "%3" == "" git pull %3
+   git push
 
-cd \github
-git clone https://github.com/JoseQuintas/oohg_fmt oohg_fmt
-cd \github\oohg_fmt
-git pull https://github.com/oohg/fmt
-git push
+:exit
 
-cd \github
-git clone https://github.com/JoseQuintas/oohg_ide oohg_ide
-cd \github\oohg_ide
-git pull https://github.com/oohg/ide
-git push
-
-cd \github
-git clone https://github.com/JoseQuintas/oohg_samples oohg_samples
-cd \github\oohg_samples
-git pull https://github.com/oohg/samples
-git push
-
-cd \github
-git clone https://github.com/JoseQuintas/hwgui hwgui
-cd \github\hwgui
-git svn init https://svn.code.sf.net/p/hwgui/code/trunk/hwgui
-git svn fetch
-git push
-
-cd \github

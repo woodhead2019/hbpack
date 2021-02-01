@@ -9,7 +9,13 @@ name: mingw 9.3
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 2/1 * *'
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'mingw 9.3'
+        default: 'mingw_0903'
+        required: true
 
 
 jobs:

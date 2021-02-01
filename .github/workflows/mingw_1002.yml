@@ -7,7 +7,13 @@ name: mingw 10.2
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 2/1 * *'
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'mingw 10.2'
+        default: 'mingw_1002'
+        required: true
 
 jobs:
 
@@ -28,3 +34,4 @@ jobs:
       with:
          name: mingw_1002
          path: c:\temp\mingw_1002.7z
+
