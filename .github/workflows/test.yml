@@ -101,4 +101,4 @@ jobs:
 #      run: |
 #         c:
 #         cd \temp\harbour
-#         7z a -r c:\temp\hb34_0703.7z c:\temp\harbour\*.* -xr'!.git' -xr'!.github'
+#         7z a -r c:\temp\hb34_0703.7z c:\temp\harbour\*.* -xr'!.git' -xr'!.github' -xr'!.hbmk'

@@ -20,7 +20,7 @@
 
    echo create/Update hwgui from sourceforge
    cd \github\hwgui
-   git svn init https://svn.code.sf.net/p/hwgui/code/trunk/hwgui
+   git svn init https://svn.code.sf.net/p/hwgui/code/trunk/hwgui -s
    git svn fetch
    git push
 
