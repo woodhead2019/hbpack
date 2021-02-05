@@ -2,7 +2,7 @@ name: xharbour
 
 on:
   schedule:
-    - cron: '0 4 1 * *'
+    - cron: '0 0 25 * *'
   workflow_dispatch:
     inputs:
       name:

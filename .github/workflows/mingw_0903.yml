@@ -9,7 +9,7 @@ name: mingw 9.3
 
 on:
   schedule:
-    - cron: '0 2 1 * *'
+    - cron: '5 0 25 * *'
   workflow_dispatch:
     inputs:
       name:

@@ -7,7 +7,7 @@ name: mingw 7.3
 
 on:
   schedule:
-    - cron: '0 1 1 * *'
+    - cron: '15 0 25 * *'
   workflow_dispatch:
     inputs:
       name:
@@ -34,3 +34,4 @@ jobs:
       with:
          name: mingw_0703
          path: c:\temp\mingw_0703.7z
+         Retention-days: 70
