@@ -15,6 +15,7 @@
    call :update oohg_samples  oohg_samples   https://github.com/oohg/samples
    call :update hwgui         hwgui
    call :update hbsefazclass  hbsefazclass
+   cd \github\hbpack
 
 :hwgui_sourceforge
 
@@ -28,8 +29,8 @@
 
 :update
 
-   echo create %2
-   git clone https://github.com/JoseQuintas/%1 \github\%2 --depth 100
+   if not exist \github\%2\*.* echo create %2
+   if not exist \github\%2\*.* git clone https://github.com/JoseQuintas/%1 \github\%2 --depth 100
    echo updating %2 from %3
    cd \github\%2
    if not "%3" == "" git pull %3
